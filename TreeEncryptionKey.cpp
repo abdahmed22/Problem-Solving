@@ -1,7 +1,7 @@
-/*An encryption key is hidden in a binary tree. The key is the concatenation of sums of selected levels of the tree.
-The selected levels start at level 0 (root level) and continues down the tree by K steps every time.
-For a tree with 9 levels, if K=3, the selected levels will be 0, 3, 6. K is the minimum value of the Lth level % the tree height.
-L is the value of the root % the tree height. You are allowed to use unordered_map and unordered_set if needed. If K is 0, set to 1 instead. */
+// An encryption key is hidden in a binary tree. The key is the concatenation of sums of selected levels of the tree.
+// The selected levels start at level 0 (root level) and continues down the tree by K steps every time.
+// For a tree with 9 levels, if K=3, the selected levels will be 0, 3, 6. K is the minimum value of the Lth level % the tree height.
+// L is the value of the root % the tree height. You are allowed to use unordered_map and unordered_set if needed. If K is 0, set to 1 instead.
 
 
 #include <cmath>
