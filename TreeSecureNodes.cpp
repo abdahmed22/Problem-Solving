@@ -1,3 +1,9 @@
+// You are analyzing a hierarchical data structure represented as a binary tree, where each node contains a numerical value.
+// A node is considered secure if, in the path from the root to that node, no node has a value greater than it.
+// Your task is to determine the total number of secure nodes in the given binary tree.
+
+
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
