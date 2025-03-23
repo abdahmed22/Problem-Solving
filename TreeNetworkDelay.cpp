@@ -1,6 +1,6 @@
 // You are managing a network of N computers, where the connections between them form a binary tree structure. 
 // The network experiences delays when sending signals between computers, and you want to determine the longest possible delay in the network.
-//  Formally, given a binary tree representing the network, where each node corresponds to a computer and edges represent direct connections,
+// Formally, given a binary tree representing the network, where each node corresponds to a computer and edges represent direct connections,
 // the maximum network delay is defined as the longest path (in terms of edges) between any two computers.
 // Write a program to compute this maximum network delay given the root of the binary tree.
 
