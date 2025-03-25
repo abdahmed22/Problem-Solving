@@ -5,6 +5,7 @@
 // You will then be given Q queries. For each query, print the number of nodes visited, and whether you found the query.
 
 
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -67,12 +68,33 @@ void build(node*& root, node* Z) {
     } 
 }
 
-pair<int, bool> searchTree(node* root, int value) {
+pair<int, bool> searchTrees(node* root, pair<int, int> query) {
     int visited = 0;
     while (root != nullptr) {
         visited++;
-        if (root->data == value) return {visited, true};
-        if (value < root->data)
+        if (root->data == query.first) 
+            break;
+        if (query.first < root->data)
+            root = root->left;
+        else
+            root = root->right;
+    }
+    
+    if (root == nullptr) {
+        return {visited, false};
+    } else {
+        root = root->tree;    
+    }
+
+    if (root == nullptr) {
+        return {visited, false};
+    }
+    
+    while (root != nullptr) {
+        visited++;
+        if (root->data == query.second) 
+            return {visited, true};
+        if (query.second < root->data)
             root = root->left;
         else
             root = root->right;
@@ -86,9 +108,9 @@ int main() {
     int departmentKey;
     int id;
     node* root = nullptr;
-    node* root2 = nullptr;
     
     map<int, vector<int>> data;
+    map<int, node*> nodes;
     vector<pair<int, int>> queries;
     
 
@@ -115,25 +137,24 @@ int main() {
     }
 
     for (auto i = data.begin(); i != data.end(); i++) { 
-        node* node = newNode(i->first);
-        build(root, node);
-        
+        node* node1 = newNode(i->first);
+        build(root, node1);
+        nodes[i->first] = node1;
+
+        node* root2 = nullptr;
+
         for (size_t j = 0; j < i->second.size(); j++) {
-            build(root2, newNode(i->second[j]));
+            node* node2 = newNode(i->second[j]);
+            build(root2, node2);
         }
-        node->tree = root2;
-        root2 = nullptr;
+
+        nodes[i->first]->tree = root2;
     }
     
     
     for (int i = 0; i < Q; i++) {
-        pair<int, bool> result = searchTree(root, queries[i].first);
-        if (result.second == false) {
-            cout << result.first << " 0" << endl;
-        } else {
-            result = searchTree(+++++++++++++++++++++++++++++++++++++++, queries[i].second);
-            cout << result.first << " " << result.second << endl;
-        }
+        pair<int, bool> result = searchTrees(root, queries[i]);
+        cout << result.first << " " << result.second << endl;
     }
     
     
